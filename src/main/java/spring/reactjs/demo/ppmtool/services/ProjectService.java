@@ -12,11 +12,13 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
-    public Project saveOrUpdateProject(Project project){
+    public Project saveOrUpdateProject(Project project) {
         //Logic
-        try{
+        try {
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
             return projectRepository.save(project);
+        }catch(NullPointerException e){
+            throw new ProjectIdException("Null project identifier");
         }catch(Exception e){
             throw new ProjectIdException("ProjectID "+project.getProjectIdentifier().toUpperCase()+ " already exists");
         }

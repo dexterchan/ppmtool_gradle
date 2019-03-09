@@ -21,3 +21,9 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
+
+task hello {
+	doLast {
+		println 'Hello Gradle'
+	}
+}
