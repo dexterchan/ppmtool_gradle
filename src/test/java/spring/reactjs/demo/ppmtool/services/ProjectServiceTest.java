@@ -38,4 +38,21 @@ public class ProjectServiceTest {
         }
 
     }
+
+    @Test
+    public void oksaveOrUpdateProject() {
+        System.out.println("Hello testing");
+
+        Project p =new Project();
+        p.setProjectName("Test project");
+        p.setDescription("Test description");
+        p.setProjectIdentifier("IdteB");
+        p.setStart_date(new Date());
+        p.setEnd_date((new Date()));
+
+            Project p2=projectService.saveOrUpdateProject(p);
+            assertThat(p2.getProjectIdentifier()).isEqualTo(p.getProjectIdentifier());
+
+
+    }
 }
