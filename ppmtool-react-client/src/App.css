@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
 
 .App-logo {
@@ -38,7 +38,7 @@ img {
 }
 
 .navbar {
-  background-color: #e3f2fd;
+  background-color: #e8fde33d;
 }
 .fa.fa-edit {
   color: #18a2b9;
