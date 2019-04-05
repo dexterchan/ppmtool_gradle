@@ -1,5 +1,12 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Note for Redux
+
+Add project Redux Architecture
+![alt text](./images/ReactReduxAddProject.png "Logo Title Text 1")
+Display projects Redux Architecture
+![alt text](./images/ReactReduxDisplayProjects.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
