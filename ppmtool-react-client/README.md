@@ -6,6 +6,8 @@ Add project Redux Architecture
 ![alt text](./images/ReactReduxAddProject.png "Logo Title Text 1")
 Display projects Redux Architecture
 ![alt text](./images/ReactReduxDisplayProjects.png)
+Update project Redux Architecture
+![alt text](./images/ReactReduxUpdateProject.png)
 
 ## Available Scripts
 
