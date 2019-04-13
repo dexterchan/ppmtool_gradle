@@ -5,7 +5,7 @@ const initialState = {
   project: []
 };
 
-export default function(state = initialState, action) {
+export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PROJECTS:
       return {
@@ -16,4 +16,4 @@ export default function(state = initialState, action) {
     default:
       return state;
   }
-}
+};
