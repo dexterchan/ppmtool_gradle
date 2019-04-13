@@ -11,14 +11,25 @@ class AddProject extends Component {
       projectIdentifier: "IdteB",
       description: "test project",
       start_date: "2019-01-01",
-      end_date: "2019-03-01"
+      end_date: "2019-03-01",
+      errors: {}
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+
+  //Life Cycle hooks
+  componentWillReceiveProps(nextProps) {
+    console.log("Run componentWillReceiveProps");
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
+  }
+
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   onSubmit(e) {
     e.preventDefault(); //prevent form reloading
     const newProject = {
@@ -31,8 +42,11 @@ class AddProject extends Component {
     this.props.createProject(newProject, this.props.history);
   }
   render() {
+    const { errors } = this.state;
+
     return (
       <div className="project">
+        <h1> error{this.state.errors.projectIdentifier}</h1>
         <div className="container">
           <div className="row">
             <div className="col-md-8 m-auto">
@@ -104,10 +118,18 @@ class AddProject extends Component {
 }
 
 AddProject.propTypes = {
-  createProject: PropTypes.func.isRequired
+  createProject: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => {
+  console.log("Run mapStateToProps");
+  return {
+    errors: state.errors
+  };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   { createProject }
 )(AddProject);
