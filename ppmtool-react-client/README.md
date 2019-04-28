@@ -8,6 +8,8 @@ Display projects Redux Architecture
 ![alt text](./images/ReactReduxDisplayProjects.png)
 Update project Redux Architecture
 ![alt text](./images/ReactReduxUpdateProject.png)
+Delete project Redux Architecture
+![Delete project](./images/ReactReduxDeleteProject.png)
 
 ## Available Scripts
 
