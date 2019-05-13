@@ -2,8 +2,10 @@ package spring.reactjs.demo.ppmtool.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.reactjs.demo.ppmtool.domain.BackLog;
 import spring.reactjs.demo.ppmtool.domain.Project;
 import spring.reactjs.demo.ppmtool.exceptions.ProjectIdException;
+import spring.reactjs.demo.ppmtool.repositories.BackLogRepository;
 import spring.reactjs.demo.ppmtool.repositories.ProjectRepository;
 
 @Service
@@ -12,10 +14,24 @@ public class ProjectService {
     @Autowired
     private ProjectRepository projectRepository;
 
+    @Autowired
+    private BackLogRepository backLogRepository;
+
     public Project saveOrUpdateProject(Project project) {
         //Logic
         try {
             project.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+
+            if(project.getId()==null){
+                BackLog b = new BackLog();
+                project.setBacklog(b);
+                b.setProject(project);
+                b.setProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+            }else{
+                BackLog b = this.backLogRepository.findByProjectIdentifier(project.getProjectIdentifier().toUpperCase());
+                project.setBacklog(b);
+            }
+
             return projectRepository.save(project);
         }catch(NullPointerException e){
             throw new ProjectIdException("Null project identifier");
