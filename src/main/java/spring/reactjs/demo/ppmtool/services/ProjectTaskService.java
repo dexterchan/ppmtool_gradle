@@ -7,6 +7,8 @@ import spring.reactjs.demo.ppmtool.domain.ProjectTask;
 import spring.reactjs.demo.ppmtool.repositories.BackLogRepository;
 import spring.reactjs.demo.ppmtool.repositories.ProjectTaskRepository;
 
+import java.util.List;
+
 @Service
 public class ProjectTaskService {
 
@@ -43,5 +45,10 @@ public class ProjectTaskService {
 
         return projectTaskRepository.save(projectTask);
     }
+
+    public Iterable<ProjectTask> findBackLogById(String id) {
+        return projectTaskRepository.findByProjectIdentifierOrderByPriority(id);
+    }
+
 
 }
