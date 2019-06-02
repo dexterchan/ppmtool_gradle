@@ -108,14 +108,6 @@ public class ProjectTaskService {
     public void deleteByProjectSequence(String _backlog_id,String pt_id){
         ProjectTask pt = this.findPTByProjectSequence(_backlog_id,pt_id );
 
-        BackLog backlog = pt.getBacklog();
-        List<ProjectTask> pts = backlog.getProjectTasks();
-        pts.remove(pt);
-        backLogRepository.save(backlog);
-        //Not working with Spring cascade = CascadeType.REFRESH
-        //Need to remove the project task from backlog first....
-        //then remove the project task
-        //either missing not working
-         projectTaskRepository.delete(pt);
+        projectTaskRepository.delete(pt);
     }
 }
