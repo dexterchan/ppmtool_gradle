@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import spring.reactjs.demo.ppmtool.domain.BackLog;
+import spring.reactjs.demo.ppmtool.domain.Project;
 import spring.reactjs.demo.ppmtool.domain.ProjectTask;
 import spring.reactjs.demo.ppmtool.services.MapValidationErrorService;
 import spring.reactjs.demo.ppmtool.services.ProjectTaskService;
@@ -48,4 +49,14 @@ public class BackLogController {
     }
 
 
+    @PatchMapping("/{backlog_id}/{pt_id}")
+    public ResponseEntity<?> updateProjectTask(@Valid @RequestBody ProjectTask updatedPt,  BindingResult result,
+                                               @PathVariable String backlog_id, @PathVariable String pt_id){
+        ResponseEntity<?> errorMap = mapValidationErrorService.mapValidationService(result);
+        if(errorMap!=null) return errorMap;
+
+        ProjectTask updatedTask = projectTaskService.updateByProjectSequence(updatedPt,backlog_id,pt_id);
+        return new ResponseEntity<>(updatedTask,HttpStatus.OK);
+
+    }
 }
