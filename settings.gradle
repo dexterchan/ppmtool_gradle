@@ -4,3 +4,8 @@ pluginManagement {
 	}
 }
 rootProject.name = 'ppmtool'
+
+
+include 'ppmtool-react-client'
+include 'ppmtool-react-server'
+

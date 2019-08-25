@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Start-Class: spring.reactjs.demo.ppmtool.PpmtoolApplication
+Main-Class: org.springframework.boot.loader.JarLauncher
+
